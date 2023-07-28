@@ -1,0 +1,137 @@
+# %version 1
+contentPath: docs\ide\create-new-project.md
+
+variables: {}
+
+placeholders: {}
+
+steps:
+- task: LaunchVisualStudio@1
+  uid: 2668fb5f
+- task: SetWindowState@1
+  appName: devenv
+  uid: f63f01ff
+- task: ResizeWindow@1
+  appName: devenv
+  width: 900
+  height: 630
+  uid: b23265e5
+- task: FocusControl@1
+  appName: devenv
+  control:
+    type: Button
+    locateBy:
+      value: Create a new project
+    enabled: true
+    keyboardFocusable: true
+  uid: 78195dec
+- task: Delay@1
+  delayForSeconds: 5
+  uid: a9421fb4
+- task: CaptureScreenshot@1
+  appName: devenv
+  path: media/vs-2022/start-window-create-new-project.png
+  uid: 8dbdcbb2
+- task: ClickControl@1
+  appName: devenv
+  control:
+    type: Button
+    locateBy:
+      value: Create a new project
+    enabled: true
+  uid: a4a9f31d
+- task: FillTextBox@1
+  appName: devenv
+  textBox:
+    type: Edit
+    locateBy:
+      value: Alt+S
+      exact: false
+    enabled: true
+    keyboardFocusable: true
+  text: asp.net
+  uid: 6afc4995
+- task: CaptureScreenshot@1
+  appName: devenv
+  path: media/vs-2022/create-new-project-filters.png
+  uid: 847f056c
+- task: SelectListItem@1
+  appName: devenv
+  listBox:
+    type: List
+    locateBy:
+      value: Project Templates
+    enabled: true
+  item: ASP.NET Core Web App
+  uid: b0e91275
+- task: ClickControl@1
+  appName: devenv
+  control:
+    type: Button
+    locateBy:
+      value: Next
+    enabled: true
+  uid: cc704b78
+- task: FillTextBox@1
+  appName: devenv
+  textBox:
+    type: Edit
+    locateBy:
+      method: Label
+      value: Project name
+    enabled: true
+  text: my-web-site
+  uid: a3d6d316
+- task: FillTextBox@1
+  appName: devenv
+  textBox:
+    type: Edit
+    locateBy:
+      method: Label
+      value: Location
+    enabled: true
+  text: C:\Users\username\source\repos
+  uid: eeb157c3
+- task: ToggleCheckbox@1
+  appName: devenv
+  checkbox:
+    type: CheckBox
+    locateBy:
+      value: Place solution and project in the same directory
+    enabled: true
+    keyboardFocusable: true
+  state: Off
+  uid: a9b9cddf
+- task: CaptureScreenshot@1
+  appName: devenv
+  path: media/vs-2022/configure-new-project.png
+  uid: 14af7828
+- task: ClickControl@1
+  appName: devenv
+  control:
+    type: Button
+    locateBy:
+      value: Next
+    enabled: true
+  uid: c0fa312f
+- task: SelectListItem@1
+  appName: devenv
+  listBox:
+    type: ComboBox
+    locateBy:
+      method: Label
+      value: Framework
+    enabled: true
+    keyboardFocusable: true
+  item: .NET 6.0 (Long Term Support)
+  uid: 1579cde8
+- task: CaptureScreenshot@1
+  appName: devenv
+  path: media/vs-2022/aspnet-core-additional-information-dialog.png
+  uid: ee0e40ef
+- task: Delay@1
+  delayForSeconds: 5
+  uid: c0eee14e
+- task: CloseVisualStudio@1
+  uid: 32e38cee
+  condition: Always
